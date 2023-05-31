@@ -1,0 +1,2 @@
+README
+inventory managment system
