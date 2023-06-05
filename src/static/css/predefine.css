@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Roboto', sans-serif;
+    src: url('../fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.dark-primary {
+    color: var(--dark-primary);
+}
+
+.raduis5 {
+    border-radius: 5px;
+}
