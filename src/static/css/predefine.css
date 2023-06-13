@@ -15,3 +15,72 @@
 .raduis5 {
     border-radius: 5px;
 }
+
+button.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+    filter: grayscale(50%);
+}
+
+.hpm-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+}
+
+.hpm-button:hover {
+    color: #ffffff;
+    background-color: var(--primary-color);
+}
+
+.hpm-button-secondary {
+
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 36px;
+    line-height: 34px;
+    font-size: 14px;
+    color: #241c15;
+    background-color: #efeeea;
+    transition: background-color 0.2s ease-in-out 0s, opacity 0.2s ease-in-out 0s;
+    padding: 0 18px;
+}
+
+.hpm-button-secondary:hover {
+    color: #241c15;
+    background-color: #f8f8f8;
+}
+
+.profile {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    overflow: hidden;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
