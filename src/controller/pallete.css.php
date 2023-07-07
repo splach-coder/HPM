@@ -14,4 +14,3 @@ foreach ($colors as $color) {
 $cssString .= "}";
 
 echo $cssString;
-?>

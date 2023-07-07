@@ -15,6 +15,7 @@
     "datatables.net-dt": "^1.13.4",
     "initialize-css": "^1.4.0",
     "jquery": "^3.7.0",
-    "pdfmake": "^0.2.7"
+    "pdfmake": "^0.2.7",
+    "toastinette": "^1.0.0"
   }
 }

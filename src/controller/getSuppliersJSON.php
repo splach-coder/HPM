@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 }
 
 $query = new handleQuery();
-$suppliers = $query->selectQuery("SELECT s.`id`, `business_name`, `prenom`, `nom`, g.name as `gender`, `email`, `phone` FROM `suppliers` s INNER JOIN `gender` g where g.id = s.gender;");
+$suppliers = $query->selectQuery("SELECT s.`id`, `business_name`, `prenom`, `nom`, g.name as `gender`, `email`, `phone` FROM `suppliers` s INNER JOIN `gender` g where g.id = s.gender  AND company_id = '" . $_SESSION['companyID'] . "' ;");
 
 header('Content-Type: application/json');
 
 // Create an associative array with the "clients" key
 //$response = array("clients" => $clients);
 
-$json_clients = json_encode($clients);
+$json_suppliers = json_encode($suppliers);
 
-echo $json_clients;
+echo $json_suppliers;

@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 
 $query = new handleQuery();
 $clients = $query->selectQuery("SELECT c.`id`, `business_name`, `first_name`, `last_name`, g.name as `gender`,  `email`, `phone` FROM `clients` c
-INNER JOIN `gender` g where g.id = c.gender");
+INNER JOIN `gender` g where g.id = c.gender AND company_id = '" . $_SESSION['companyID'] . "'");
 
 header('Content-Type: application/json');
 

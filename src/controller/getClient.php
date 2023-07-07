@@ -25,7 +25,7 @@ $id = $_GET['id'];
 $query = new handleQuery();
 
 $client = $query->selectQuery("SELECT * FROM `clients`
-WHERE id = ?;", [$id]);
+WHERE id = ? AND company_id = '" . $_SESSION['companyID'] . "'", [$id]);
 
 header('Content-Type: application/json');
 

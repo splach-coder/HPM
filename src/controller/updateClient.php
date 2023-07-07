@@ -50,7 +50,7 @@ if (isset($_FILES['image'])) {
 
 $query = '';
 $params = [];
-$companyID = '248a3a2f-026a-11ee-a4d4-089798ad5b2f';
+$companyID = $_SESSION['companyID'];
 $part = "";
 
 //case: image removed
@@ -60,9 +60,11 @@ if ($imageRemoved) {
     $conn = $db->getConnection();;
     $image = getSingleValue($conn, 'clients', 'image', "id = '$id'");
 
-    if (removeImage($image, $uploadDir) == "Successfully")
-        $part = ",`image`='user-default.png'";
+    if ($image != "user-default.png")
+        if (removeImage($image, $uploadDir) == "Successfully")
+            $part = " , `image`='user-default.png' ";
 }
+
 
 //case: image changed
 if ($imageChanged) {

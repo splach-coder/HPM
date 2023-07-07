@@ -1,0 +1,56 @@
+.dash-part {
+    background-color: var(--white-color);
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 5px 5px 10px #ccc,
+        -5px -5px 10px transparent;
+}
+
+.dash-part img {
+    width: 50px;
+    aspect-ratio: 1/1;
+}
+
+.title-chart {
+    color: var(--dark-color);
+    font-size: 22px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.dash-part .icon:not(.S) {
+    border: 1px solid var(--primary-color);
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary {
+    background: #F8F8F8;
+    padding: 15px 5px;
+    border-radius: 5px;
+}
+
+.icon.S, .infos.S {
+    padding: 5px 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 400;
+    color: #8C8D8C;
+    line-height: 20px;
+}
+
+.number {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--dark-color);
+}

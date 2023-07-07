@@ -2,12 +2,12 @@
     <header>
         <div class="image-text">
             <span class="image">
-                <img src="../static/images/logo.jpeg" alt="">
+                <img src="../static/images/<?= $_SESSION['logo'] ?>" alt="">
             </span>
 
             <div class="text logo-text">
-                <span class="name">HPM</span>
-                <span class="profession">marrakech</span>
+                <span class="name"><?= $_SESSION['business_name'] ?></span>
+                <span class="profession"><?= $_SESSION['city'] ?></span>
             </div>
         </div>
 
@@ -33,8 +33,36 @@
 
                 <li class="nav-link">
                     <a href="suppliers.php">
-                        <i class="fa-solid fa-user icon"></i>
+                        <i class="fa-solid fa-truck-field icon"></i>
                         <span class="text nav-text">Fournisseur</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="products.php">
+                        <i class="fa-solid fa-boxes-stacked icon"></i>
+                        <span class="text nav-text">Produits</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="purchase.php">
+                        <i class="fa-solid fa-bag-shopping icon"></i>
+                        <span class="text nav-text">Purchase</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="sales.php">
+                        <i class="fa-solid fa-coins icon"></i>
+                        <span class="text nav-text">Salles</span>
+                    </a>
+                </li>
+
+                <li class="nav-link">
+                    <a href="settings.php">
+                        <i class="fa-solid fa-gear icon"></i>
+                        <span class="text nav-text">Settings</span>
                     </a>
                 </li>
             </ul>
@@ -43,7 +71,7 @@
         <div class="bottom-content">
             <li class="nav-link">
                 <a href="../controller/logout.php">
-                    <i class="fas fa-log-out icon"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket fa-rotate-180 icon"></i>
                     <span class="text nav-text">Logout</span>
                 </a>
             </li>

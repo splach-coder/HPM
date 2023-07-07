@@ -1,3 +1,4 @@
+<?php require_once '../auth/ensureAuthentication.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HPM | Clients</title>
+    <title>HPM | Suppliers</title>
     <?php include 'links.php' ?>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- css and js resourcess -->
     <!-- ##### CSS ######  -->
@@ -18,7 +17,9 @@
     <!-- ##### JS ######  -->
     <script defer src=" ../static/js/sidebar.js">
     </script>
-    <script defer src="../static/js/client.js"></script>
+    <script defer src="../static/js/suppliers/getsuppliers.js"></script>
+    <script defer src="../static/js/suppliers/addSupplier.js"></script>
+    <script defer src="../static/js/suppliers/updateSupplier.js"></script>
 </head>
 
 <body>
@@ -40,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row me-0">
+                <div class="row me-0 pb-5">
                     <div class="col">
                         <table id="suppliersTable" class="display">
                             <thead>
@@ -68,7 +69,7 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h3 class="modal-title">Clients</h3>
+                    <h3 class="modal-title">Suppliers</h3>
                     <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                 </div>
 
@@ -87,7 +88,7 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="tab-content">
+                    <div class="tab-content add">
                         <!-- General Info Tab -->
                         <div class="tab-pane fade show active" id="general">
                             <div class="form d-flex flex-column gap-2">
@@ -104,7 +105,7 @@
                                     <input type="text" id="firstName" class=" p-1" name="prenom" placeholder="Prénom">
                                 </div>
 
-                                <div class="form-group d-flex flex-column">
+                                <div class="form-bgroup d-flex flex-column">
                                     <label for="gender">Civilité </label>
                                     <select name="gender" id="gender" class="p-2">
                                         <!-- This option will be populated with data from an API -->
@@ -115,7 +116,7 @@
 
                                 <label for="drag-box mt-2">Profile Photo </label>
                                 <div class="drag-drop" id="drag-box">
-                                    <div class="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                    <div class="box add" ondrop="drop(event)" ondragover="allowDrop(event)">
                                         <span class="drop-text">Drop down here or select a file</span>
                                         <img id="previewImage" src="#" alt="Preview" style="display: none;">
                                         <span class="delete-icon" onclick="deleteImage(event)">&#x2715;</span>
@@ -177,18 +178,18 @@
                 <!-- Modal Footer -->
                 <div class="modal-footer">
                     <button type="button" class="hpm-button-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="add-client-button" class="hpm-button">Add Client</button>
+                    <button type="button" id="add-supplier-button" class="hpm-button">Add Supplier</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="showClient" class="modal fade">
+    <div id="showSupplier" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h3 class="modal-title">Client</h3>
+                    <h3 class="modal-title">Supplier</h3>
                     <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                 </div>
 
@@ -207,18 +208,20 @@
 
                 <!-- Modal Body -->
                 <div class="modal-body">
-                    <div class="tab-content">
+                    <div class="tab-content show">
                         <!-- General Info Tab -->
                         <div class="tab-pane fade show active" id="data-general">
                             <div class="form d-flex flex-column gap-2">
                                 <label for="drag-box mt-2 mx-auto">Profile Photo </label>
                                 <div class="drag-drop mx-auto" id="show-drag-box">
-                                    <div class="box show-box">
+                                    <i id="show-image" data-bs-toggle="modal" class="fas fa-eye hpm-button-secondary" style="position: absolute;">
+                                    </i>
+                                    <div class="box show-box" ondrop="drop2(event)" ondragover="allowDrop(event)">
                                         <span class="show-drop-text">Drop down here or select a file</span>
                                         <img id="show-previewImage" src="#" alt="Preview" style="display: none;">
-                                        <span class="delete-icon show">&#x2715;</span>
+                                        <span class="delete-icon show" onclick="deleteImage2(event)">&#x2715;</span>
                                     </div>
-                                    <input type="file" name="image" id="showFileInput" style="display: none;">
+                                    <input type="file" name="image" id="showFileInput" style="display: none;" onchange="handleFileSelect2(event)">
                                 </div>
                                 <div class="form-group d-flex flex-column">
                                     <label for="show-businessName">Raison Social </label>
@@ -270,7 +273,7 @@
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="show-country">Pays </label>
-                                    <input type="text" id="show-country" class="p-1" name="country">
+                                    <input type="text" id="show-country" class="p-1" name="country" placeholder="pays ">
                                 </div>
                             </div>
                         </div>
@@ -295,8 +298,19 @@
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button type="button" class="hpm-button-secondary" id="delete-client-button" data-bs-dismiss="modal">Delete</button>
-                    <button type="button" id="update-client-button" class="hpm-button disabled">Update</button>
+                    <button type="button" class="hpm-button-secondary" id="delete-supplier-button" data-bs-dismiss="modal">Delete</button>
+                    <button type="button" id="update-supplier-button" class="hpm-button disabled">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="imageModalLabel" src="#" class="img-fluid" alt="Large Image">
                 </div>
             </div>
         </div>

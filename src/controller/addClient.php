@@ -37,7 +37,7 @@ if (empty($raisonSocial) || empty($nom) || empty($prenom) || $gender === "none")
 
 $query = '';
 $params = [];
-$companyID = '248a3a2f-026a-11ee-a4d4-089798ad5b2f';
+$companyID = $_SESSION['companyID'];
 
 if (isset($_FILES['image'])) {
     // Set upload directory

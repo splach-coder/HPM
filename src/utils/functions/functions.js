@@ -39,3 +39,39 @@ function formMessage(message, type, container, position = "full-width") {
     $(".alert").alert("close");
   }, 4000);
 }
+
+function toast(message, type, position = "tr") {
+  Toastinette.show(type, 3000, message);
+  Toastinette.setPosition(position);
+}
+
+function getMonth() {
+  // Get the current date
+  const currentDate = new Date();
+
+  // Get the month from the current date (returns a zero-based index)
+  const monthIndex = currentDate.getMonth();
+
+  // Add 1 to the month index to get the desired representation
+  const monthNumber = monthIndex + 1;
+
+  return monthNumber;
+}
+
+function convertDashToSpace(word) {
+  // Remove leading and trailing dashes
+  word = word.replace(/^[-]+|[-]+$/g, "");
+
+  // Split the word by dashes
+  var wordArray = word.split("-");
+
+  // Capitalize the first letter of each word
+  for (var i = 0; i < wordArray.length; i++) {
+    wordArray[i] = wordArray[i].charAt(0).toUpperCase() + wordArray[i].slice(1);
+  }
+
+  // Join the words with spaces
+  var convertedWord = wordArray.join(" ");
+
+  return convertedWord;
+}

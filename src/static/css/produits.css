@@ -1,0 +1,36 @@
+.products-overview .title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 20px;
+    color: var(--primary-color);
+}
+
+.products-overview .number {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    color: var(--dark-color);
+}
+
+.products-overview .s-title {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #777;
+}
+
+.row h6 {
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 25px;
+    color: var(--dark-color);
+}
+
+.devider {
+    width: 1px;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 16px;
+    background-color: var(--light-primary);
+}
