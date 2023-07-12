@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var formData = new FormData();
+  var palleteForm = new FormData();
   var id;
   //get all colors
   //Make the AJAX POST request
@@ -81,4 +82,40 @@ $(document).ready(function () {
   function clearForm() {
     formData = new FormData();
   }
+
+  $("#save-pallete-button").click(function () {
+    $(this).html('<i class="fas fa-spinner fa-spin"></i>');
+    $(this).addClass("disabled");
+
+    // Get the form element
+    const pallete = $(".palleteGenerator");
+
+    let i = 0;
+
+    let arr = ["primaryColor", "Lightprimary", "Darkprimary"];
+
+    // Append all form fields to the FormData object
+    pallete.find(".color").each(function () {
+      const hexColor = $(this).children(".hex-value").text();
+
+      if (i < 3) {
+        // Append other inputs, selects, and textareas to the FormData object
+        palleteForm.append(arr[i], hexColor);
+        i++;
+      }
+    });
+
+    //Make the AJAX POST request
+    $.ajax({
+      url: "../controller/savePallete.php",
+      method: "POST",
+      data: palleteForm,
+      processData: false,
+      contentType: false,
+      success: function (response) {
+        // Handle the success response
+        location.reload();
+      },
+    });
+  });
 });

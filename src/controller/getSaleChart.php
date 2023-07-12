@@ -20,13 +20,14 @@ if (empty($_GET['month'])) {
     exit;
 }
 
-$month = $_GET['month'];
+$month = date("m");
 
 $query = new handleQuery();
 
 $sales = $query->selectQuery("SELECT UNIX_TIMESTAMP(DATE(`sale_date`)) * 1000 AS date,  CAST(SUM(`price`) AS DECIMAL(10, 2)) AS value
 FROM `sales`
 WHERE MONTH(`sale_date`) = ?
+AND company_id = '" . $_SESSION['companyID'] . "'
 GROUP BY date;", [$month]);
 
 

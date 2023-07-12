@@ -113,28 +113,78 @@ function checkLogin()
     }
 }
 
-function remember_me($conn)
+function checkOneHourElapsed($datetime)
+{
+    // Convert MySQL datetime string to Unix timestamp
+    $datetimeTimestamp = $datetime;
+
+    // Calculate the Unix timestamp for one hour ago
+    $oneHourAgoTimestamp = time() - 3600;
+
+    // Compare the given datetime timestamp with one hour ago
+    if ($datetimeTimestamp >= $oneHourAgoTimestamp) {
+        // Return true if less than one hour has elapsed
+        return true;
+    } else {
+        // Return false if more than one hour has elapsed
+        return false;
+    }
+}
+
+
+function compareStrings($string1, $string2)
+{
+    // Compare the two strings using the strcmp() function
+    $result = strcmp($string1, $string2);
+
+    // Return true if the result is 0 (i.e. the strings are equal)
+    // Otherwise, return false
+    return $result === 0;
+}
+
+function remember_me()
 {
     // Verify the token when the user visits the site
     if (isset($_COOKIE['remember_token'])) {
+
         $token = $_COOKIE['remember_token'];
-        $sql = "SELECT `id`, `username`, `role` FROM `users` WHERE `reset_token` = ? AND `reset_token_expires_at` > NOW();";
-        $user = $conn->prepare($sql)->execute([$token]);
+
+        $sql = "SELECT u.`id`, u.`username`, u.`fullname`, u.`email`, u.`password`, r.name AS 'role', company_id, image, c.`business_name` , c.`city`, c.`logo`
+        FROM `users` AS u
+        INNER JOIN `company` AS c ON u.company_id = c.id
+        INNER JOIN `roles` AS r ON u.role_id = r.id
+        WHERE u.remember_me_token = ? AND u.remember_me_token_expires_at > NOW();";
+
+        $query = new handleQuery();
+        $user = $query->selectQuery($sql, [$token]);
 
         if ($user) {
             // Log the user in automatically
             // Store the user's session information
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['id'] = $user[0]['id'];
+            $_SESSION['companyID'] = $user[0]['company_id'];
+            $_SESSION['business_name'] = $user[0]['business_name'];
+            $_SESSION['city'] = $user[0]['city'];
+            $_SESSION['logo'] = $user[0]['logo'];
+            $_SESSION['username'] = $user[0]['username'];
+            $_SESSION['fullname'] = $user[0]['fullname'];
+            $_SESSION['email'] = $user[0]['email'];
+            $_SESSION['role'] = $user[0]['role'];
+            $_SESSION['image'] = $user[0]['image'];
             $_SESSION['loggedIn'] = true;
 
             // Redirect the user to the home page or another protected resource
             header('Location: ../views/dashboard.php');
             exit;
         } else {
+
             //remove the cookie from the browser
             setcookie('remember_token', '', time() - 3600, '/');
+            // unset all session variables
+            $_SESSION = array();
+
+            // destroy the session
+            session_destroy();
         }
     }
 }

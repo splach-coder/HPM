@@ -4,8 +4,6 @@
 <!-- link the boostrap -->
 <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" />
 
-<!-- link the pallete -->
-<link rel="stylesheet" type="text/css" href="../controller/pallete.css.php" />
 
 <!-- css frame work -->
 <link rel="stylesheet" href="../static/css/predefine.css" />

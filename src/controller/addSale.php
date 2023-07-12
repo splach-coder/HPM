@@ -52,7 +52,7 @@ $resU = $qU->execQuery($queryU, $paramsU);
 
 if ($res > 0) {
     // If the client addition is successful
-    echo "Success: Purchase Affectted successfully.";
+    echo "Success: Sale Affectted successfully.";
 } else {
     // If the client addition not successful
     echo "Error: an error Occured repeat the opration please.";

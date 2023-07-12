@@ -34,7 +34,8 @@ DATE_FORMAT(`purchase_date`, '%d %M %Y')  AS date
 FROM `purchase` AS ps
 INNER JOIN `products` AS p ON p.id = ps.product_id
 INNER JOIN `suppliers` AS s ON s.id = p.supplier_id
-WHERE  `ps`.`id` = ?;", [$id]);
+WHERE  `ps`.`id` = ? 
+AND ps.company_id = '" . $_SESSION['companyID'] . "'", [$id]);
 
 
 header('Content-Type: application/json');

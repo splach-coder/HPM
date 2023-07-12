@@ -34,7 +34,7 @@ DATE_FORMAT(`sale_date`, '%d %M %Y')  AS date
 FROM `sales` AS ps
 INNER JOIN `products` AS p ON p.id = ps.product_id
 INNER JOIN `clients` AS s ON s.id = ps.client_id
-WHERE  `ps`.`id` = ?;", [$id]);
+WHERE  `ps`.`id` = ? AND ps.company_id = '" . $_SESSION['companyID'] . "'", [$id]);
 
 
 header('Content-Type: application/json');

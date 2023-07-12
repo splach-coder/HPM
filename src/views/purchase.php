@@ -21,6 +21,7 @@ $sumPurchases = getSingleValue($conn, "`purchase`", "SUM(price)", "purchase_date
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HPM | Purchases</title>
+    <link rel="stylesheet" type="text/css" href="../controller/Changeablepallete.css.php">
     <?php include 'links.php' ?>
 
     <!-- css and js resourcess -->
@@ -155,7 +156,8 @@ $sumPurchases = getSingleValue($conn, "`purchase`", "SUM(price)", "purchase_date
                             <div class="form d-flex flex-column gap-3">
                                 <div class="form-group d-flex flex-column">
                                     <label for="query">Search </label>
-                                    <input type="text" id="query" class="p-1" name="query" placeholder="produit id or nom">
+                                    <input type="text" id="query" class="p-1" name="query"
+                                        placeholder="produit id or nom">
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
@@ -170,7 +172,8 @@ $sumPurchases = getSingleValue($conn, "`purchase`", "SUM(price)", "purchase_date
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="query">Produit nom </label>
-                                    <input type="text" id="produitNom" class="p-1" name="produitNom" placeholder="produit nom">
+                                    <input type="text" id="produitNom" class="p-1" name="produitNom"
+                                        placeholder="produit nom">
                                 </div>
                             </div>
                         </div>
@@ -179,22 +182,26 @@ $sumPurchases = getSingleValue($conn, "`purchase`", "SUM(price)", "purchase_date
                             <div class="form d-flex flex-column gap-3">
                                 <div class="form-group d-flex flex-column">
                                     <label for="prix">Prix d'achat </label>
-                                    <input type="number" id="prix" class="p-1" name="prix" placeholder="prix d'achat" disabled>
+                                    <input type="number" id="prix" class="p-1" name="prix" placeholder="prix d'achat"
+                                        disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="margeht">Marge HT </label>
-                                    <input type="number" id="margeht" class="p-1" name="margeht" placeholder="marge HT" disabled>
+                                    <input type="number" id="margeht" class="p-1" name="margeht" placeholder="marge HT"
+                                        disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="margeht100">Marge HT en %</label>
-                                    <input type="number" id="margeht100" class="p-1" name="margeht100" max="100" min="0" placeholder="marge HT en %" disabled>
+                                    <input type="number" id="margeht100" class="p-1" name="margeht100" max="100" min="0"
+                                        placeholder="marge HT en %" disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="prixvente">P.ventes TTC</label>
-                                    <input type="number" id="prixvente" class="p-1" name="prixvente" placeholder="prix du vente ttc" disabled>
+                                    <input type="number" id="prixvente" class="p-1" name="prixvente"
+                                        placeholder="prix du vente ttc" disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
@@ -273,12 +280,14 @@ $sumPurchases = getSingleValue($conn, "`purchase`", "SUM(price)", "purchase_date
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="Show-produitNom">Produit nom </label>
-                                    <input type="text" id="Show-produitNom" class="p-1" name="Show-produitNom" placeholder="produit nom" disabled>
+                                    <input type="text" id="Show-produitNom" class="p-1" name="Show-produitNom"
+                                        placeholder="produit nom" disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="Show-supplier">Supplier </label>
-                                    <input type="text" id="Show-supplier" class="p-1" name="Show-supplier" placeholder="produit nom" disabled>
+                                    <input type="text" id="Show-supplier" class="p-1" name="Show-supplier"
+                                        placeholder="produit nom" disabled>
                                 </div>
 
                                 <div class="form-group d-flex flex-column">

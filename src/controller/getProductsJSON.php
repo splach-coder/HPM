@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 $query = new handleQuery();
 $products = $query->selectQuery("SELECT p.`id`, p.`name`, `purchase_price`, `gross_margin`, `stock_status`, u.name AS `unit`, f.name AS `family` FROM `products` AS p
 INNER JOIN `family` AS f ON f.id = p.family_id
-INNER JOIN `units` AS u ON u.id = p.unit");
+INNER JOIN `units` AS u ON u.id = p.unit
+WHERE p.company_id = '" . $_SESSION['companyID'] . "' ;");
 
 header('Content-Type: application/json');
 

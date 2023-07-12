@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 $companyID =  $_SESSION['companyID'];
 
 $query = new handleQuery();
-$activity = $query->selectQuery("SELECT * FROM activity WHERE `company_id` = '$companyID'");
+$activity = $query->selectQuery("SELECT * FROM activity WHERE `company_id` = '$companyID' OR def = 'default'");
 
 header('Content-Type: application/json');
 

@@ -42,7 +42,7 @@ $.ajax({
     $.each(response, function (item) {
       var res = response[item];
       var option = $("<option>").val(res.id).text(res.name);
-      $("select[id='gender']").append(option);
+      $("select[name='gender']").append(option);
       $("select[id='show-gender']").append(option);
     });
   },

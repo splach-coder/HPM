@@ -19,7 +19,7 @@ $search = $_GET['query'];
 $query = new handleQuery();
 $products = $query->selectQuery("SELECT `id`, `name`, `purchase_price`, `selling_price`, `stock`, `gross_margin`, `gorss_margin_100` 
 FROM `products`
-WHERE id LIKE ? OR name LIKE ?;", ["%$search%", "%$search%"]);
+WHERE id LIKE ? OR name LIKE ? AND company_id = '" . $_SESSION['companyID'] . "'", ["%$search%", "%$search%"]);
 
 header('Content-Type: application/json');
 

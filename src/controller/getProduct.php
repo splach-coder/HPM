@@ -27,7 +27,7 @@ $query = new handleQuery();
 $products = $query->selectQuery("SELECT p.*, CONCAT(s.nom, ' ', s.prenom, '  |  ', s.business_name) AS 'supplier' FROM `products` AS p
 INNER JOIN `suppliers` AS s 
 ON p.supplier_id = s.id
-WHERE p.id = ?;", [$id]);
+WHERE p.id = ? AND p.company_id = '" . $_SESSION['companyID'] . "'", [$id]);
 
 $images = $query->selectQuery("SELECT `id`, `image_url` FROM `product_images` WHERE  `product_id` = ? ORDER BY `created_at` DESC;", [$id]);
 

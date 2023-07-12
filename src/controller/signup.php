@@ -120,7 +120,7 @@ $defaultColorPalette = [
     ['name' => '--dark-primary', 'color' => '#222A50'],
     ['name' => '--light-primary', 'color' => '#7BA4D8'],
     ['name' => '--dark-color', 'color' => '#232323'],
-    ['name' => '--light-color', 'color' => '#ffffff'],
+    ['name' => '--white-color', 'color' => '#ffffff'],
 ];
 
 foreach ($defaultColorPalette as $color) {

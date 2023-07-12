@@ -16,6 +16,10 @@ var table = $("#productsTable").DataTable({
   buttons: ["print", "csv", "colvis"],
 });
 
+console.log($(".unitSelect"));
+console.log($("select[name='category']"));
+console.log($("select[name='activite']"));
+
 //get the number of data
 var dataLength = 0;
 
@@ -37,11 +41,29 @@ $.ajax({
   method: "GET",
   dataType: "json",
   success: function (response) {
+    console.log(response);
+    $.each(response, function (item) {
+      var res = response[item];
+      var option = $("<option>").val(res.id).text(res.name);
+      $("select#Show-activite").append(option);
+    });
+  },
+  error: function (xhr, status, error) {
+    console.log("AJAX request error:", error);
+  },
+});
+
+//populate the activity modal
+$.ajax({
+  url: "../controller/getActivityJSON.php",
+  method: "GET",
+  dataType: "json",
+  success: function (response) {
+    console.log(response);
     $.each(response, function (item) {
       var res = response[item];
       var option = $("<option>").val(res.id).text(res.name);
       $("select[id='activite']").append(option);
-      $("select[id='Show-activite']").append(option);
     });
   },
   error: function (xhr, status, error) {
@@ -55,11 +77,29 @@ $.ajax({
   method: "GET",
   dataType: "json",
   success: function (response) {
+    console.log(response);
+    $.each(response, function (item) {
+      var res = response[item];
+      var option = $("<option>").val(res.id).text(res.name);
+      $("select#Show-unit").append(option);
+    });
+  },
+  error: function (xhr, status, error) {
+    console.log("AJAX request error:", error);
+  },
+});
+
+//populate the unit modal
+$.ajax({
+  url: "../controller/getUnitsJSON.php",
+  method: "GET",
+  dataType: "json",
+  success: function (response) {
+    console.log(response);
     $.each(response, function (item) {
       var res = response[item];
       var option = $("<option>").val(res.id).text(res.name);
       $("select[id='unit']").append(option);
-      $("select[id='Show-unit']").append(option);
     });
   },
   error: function (xhr, status, error) {
@@ -73,11 +113,11 @@ $.ajax({
   method: "GET",
   dataType: "json",
   success: function (response) {
+    console.log(response);
     $.each(response, function (item) {
       var res = response[item];
       var option = $("<option>").val(res.id).text(res.name);
-      $("select[id='category']").append(option);
-      $("select[id='Show-category']").append(option);
+      $("#Show-category").append(option);
     });
   },
   error: function (xhr, status, error) {
@@ -85,3 +125,20 @@ $.ajax({
   },
 });
 
+//populate the family modal
+$.ajax({
+  url: "../controller/getFamilyJSON.php",
+  method: "GET",
+  dataType: "json",
+  success: function (response) {
+    console.log(response);
+    $.each(response, function (item) {
+      var res = response[item];
+      var option = $("<option>").val(res.id).text(res.name);
+      $("select[id='category']").append(option);
+    });
+  },
+  error: function (xhr, status, error) {
+    console.log("AJAX request error:", error);
+  },
+});

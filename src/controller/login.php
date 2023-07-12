@@ -40,6 +40,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (isset($_POST['rememberme'])) {
             // Generate a random token and store it in a cookie
             $token = bin2hex(openssl_random_pseudo_bytes(16));
+
             setcookie('remember_token', $token, time() + (86400 * 30), '/'); // Cookie expires in 30 days
 
             // Store the token in the database
@@ -49,7 +50,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
             $sql = "UPDATE `users` SET `remember_me_token`=?,`remember_me_token_expires_at`= ? WHERE `id`= ? ;";
 
-            $conn->prepare($sql)->execute([$token, $expiry_date, $user_id]);
+            $query = new handleQuery();
+            $res = $query->execQuery($sql, [$token, $expiry_date, $user_id]);
         }
 
         // Store the user's session information

@@ -14,8 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
     exit;
 }
 
+$companyID = $_SESSION['companyID'];
+
 $query = new handleQuery();
-$family = $query->selectQuery("SELECT * FROM family");
+$family = $query->selectQuery("SELECT * FROM family WHERE `company_id` = '$companyID' OR def = 'default'");
 
 header('Content-Type: application/json');
 

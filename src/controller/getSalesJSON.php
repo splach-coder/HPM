@@ -25,6 +25,7 @@ DATE_FORMAT(`sale_date`, '%d %M %Y')  AS date
 FROM `sales` AS ps
 INNER JOIN `products` AS  p ON  ps.product_id = p.id
 INNER JOIN `clients` AS c ON c.id = ps.client_id
+WHERE ps.company_id = '" . $_SESSION['companyID'] . "'
 ORDER BY sale_date DESC;");
 
 header('Content-Type: application/json');

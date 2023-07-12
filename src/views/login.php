@@ -1,3 +1,7 @@
+<?php
+require_once '../auth/forwardAuthentication.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HPM | Login</title>
-
+    <link rel="stylesheet" type="text/css" href="../controller/pallete.css.php">
     <?php include 'links.php' ?>
 
     <!-- link the css styles -->
@@ -37,12 +41,12 @@
             </div>
             <div class="col d-flex flex-column align-items-center py-5 gap-3">
                 <div class="logo">
-                    <img src="../static/images/logo.jpeg" alt="logo" />
+                    <img src="../interface/images/logo.png" alt="logo" />
                 </div>
                 <h5 class="dark-primary">Hello ! Welcome back</h5>
                 <form action="../controller/login.php" method="POST" class="d-flex flex-column gap-4">
                     <?php
-          if (isset($_GET['message']) && isset($_GET['type'])) { ?>
+                    if (isset($_GET['message']) && isset($_GET['type'])) { ?>
                     <div class="alert alert-<?= $_GET['type'] ?> alert-dismissible fade show" role="alert">
                         <?= $_GET['message'] ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -60,15 +64,20 @@
                     </div>
                     <div class="form-group d-flex justify-content-between">
                         <div class="check-group d-flex align-items-center gap-2">
-                            <input type="checkbox" name="remember_me" id="rememberme" class="raduis5 p-2" />
+                            <input type="checkbox" name="rememberme" id="rememberme" class="raduis5 p-2" />
                             <label for="rememberme">Remember me</label>
                         </div>
                         <div class="reset-pass">
-                            <a href="#">Reset password</a>
+                            <a href="./email1.php">Reset password</a>
                         </div>
                     </div>
                     <div class="form-group">
                         <button class="btn raduis5 text-center">Login</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="reset-pass">
+                            Don't have an account ? <a href="./signup.php">signu up</a>
+                        </div>
                     </div>
                 </form>
             </div>

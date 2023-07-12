@@ -19,6 +19,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HPM | Products</title>
+    <link rel="stylesheet" type="text/css" href="../controller/Changeablepallete.css.php">
     <?php include 'links.php' ?>
 
     <!-- css and js resourcess -->
@@ -98,7 +99,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
                                         <?= $categories ?>
                                     </div>
                                     <div class="s-title py-2">
-                                        last 5 days ago
+
                                     </div>
                                 </div>
                                 <div class="devider"></div>
@@ -113,7 +114,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
                                         <?= $products ?>
                                     </div>
                                     <div class="s-title py-2">
-                                        last 5 days ago
+
                                     </div>
                                 </div>
                                 <div class="devider"></div>
@@ -128,7 +129,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
                                         <?= $lowStock ?>
                                     </div>
                                     <div class="s-title py-2">
-                                        last 5 days ago
+
                                     </div>
                                 </div>
                                 <div class="devider"></div>
@@ -241,7 +242,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="unit">Unit </label>
-                                    <select name="unit" id="unit" class="p-2">
+                                    <select name="unit" id="unit" class="p-2 unitSelect">
                                         <!-- This option will be populated with data from an API -->
                                         <option value="none" selected=" selected">select unit</option>
                                     </select>
@@ -249,7 +250,7 @@ $outOfStock = getSingleValue($conn, "`products`", "COUNT(*)", "`stock` < 1 $wher
 
                                 <div class="form-group d-flex flex-column">
                                     <label for="activite">Activite </label>
-                                    <select name="activite" id="activite" class="p-2">
+                                    <select name="activite" id="activite" class="p-2 activiteSelect">
                                         <!-- This option will be populated with data from an API -->
                                         <option value="none" selected=" selected">select activite</option>
                                     </select>

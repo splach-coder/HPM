@@ -72,7 +72,7 @@ $("#update-logo-button").click(function () {
   $(this).addClass("disabled");
 
   $.ajax({
-    url: "",
+    url: "../controller/updateLogo.php",
     method: "POST",
     data: formData,
     processData: false,

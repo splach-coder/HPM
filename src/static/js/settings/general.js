@@ -42,6 +42,9 @@ $(document).ready(function () {
         // Handle the success response
         console.log(response);
         if (response == "Success: Company Infos updated successfully.") {
+          formMessage(response, "success", $(".row.errors .col"));
+          $("#update-button-general").html("Update");
+          $("#update-button-general").removeClass("disabled");
         } else {
           formMessage(response, "danger", $(".row.errors .col"));
         }
